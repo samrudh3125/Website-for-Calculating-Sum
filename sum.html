@@ -1,5 +1,14 @@
 <html>
     <script>
+        let timeout;
+
+        function debounce(){
+            clearTimeout(timeout);
+            setTimeout(function(){
+                populateDiv()
+            },1000)
+        }
+
        async function populateDiv(){
             const number=document.querySelectorAll("input")
             const a=number[0].value
@@ -10,9 +19,8 @@
         }
     </script>
     <body>
-        <input type="text" placeholder="first number"></input><br></br>
-        <input type="text" placeholder="second number"></input><br></br>
-        <button onclick="populateDiv()">Calculate Sum</button><br></br>
+        <input oninput="debounce()" type="text" placeholder="first number"></input><br></br>
+        <input oninput="debounce()" type="text" placeholder="second number"></input><br></br>
         <div id="finalsum"></div>
     </body>
 </html>
